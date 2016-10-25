@@ -1,0 +1,77 @@
+.home {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+
+	video#videobg { 
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-height: 100%;
+		width: 100%;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background: url('src/images/poster.jpg') no-repeat;
+		background-size: cover;
+		transition: 1s opacity;
+	}
+
+	.menu-principal {
+		font-family: @font-thin;
+		font-size: 1em;
+		position: absolute;
+		right: 16%;
+		top: 40px;
+
+		li {
+			display: inline-table;
+			padding: 0 10px;
+			.smooth();
+			.grow();
+		}
+
+		a {
+			color: @color-menu;
+			text-decoration: none;
+			display: block;
+
+			&:hover {
+		    	color: @color-hover;
+		    }
+		}
+	}
+
+	.menu-social {
+		position: absolute;
+	    right: 6%;
+	    top: 40px;
+
+		.icon-facebook, .icon-instagram {
+			font-family: @font-icon;
+			color: @color-social;
+			width: 33px;
+			height: 18px;
+			display: block;
+		    background: @color-menu;
+		    text-align: center;
+		    text-decoration: none;
+		    padding: 2px 0;
+		    margin-bottom: 10px;
+		    .border-radius ();
+		    .buzz();
+
+		    &:hover {
+		    	background: @color-hover;
+		    }
+		}
+
+		.icon-facebook:before {
+			content: '\f30c';
+		}
+
+		.icon-instagram:before {
+			content: '\f32d';
+		}
+	}
+}
