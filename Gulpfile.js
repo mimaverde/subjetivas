@@ -16,7 +16,7 @@ var cache = require('gulp-cache');
 var notify = require('gulp-notify');
 var del = require('del');
 gulp.task('less',function(){
-    gulp.src(['src/css/**/*.less'])
+    gulp.src(['src/css/style.less'])
         .pipe(plumber({
             handleError: function (err) {
                 console.log(err);
@@ -28,12 +28,12 @@ gulp.task('less',function(){
         .pipe(cssComb())
         .pipe(cmq({log:true}))
         .pipe(concat('style.css'))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest(''))
         .pipe(rename({
             suffix: '.min'
         }))
         .pipe(cleanCss())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest(''))
         .pipe(notify('css task finished'))
 });
 gulp.task('js',function(){

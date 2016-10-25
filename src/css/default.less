@@ -1,0 +1,118 @@
+// Fontes do site
+@font-face {
+  font-family: 'fontello';
+  src: url('src/fonts/fontello.eot?76722155');
+  src: url('src/fonts/fontello.eot?76722155#iefix') format('embedded-opentype'),
+       url('src/fonts/fontello.woff2?76722155') format('woff2'),
+       url('src/fonts/fontello.woff?76722155') format('woff'),
+       url('src/fonts/fontello.ttf?76722155') format('truetype'),
+       url('src/fonts/fontello.svg?76722155#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('src/fonts/Gotham-Bold.eot?') format('eot'),
+       url('src/fonts/Gotham-Bold.woff2') format('woff2'),
+       url('src/fonts/Gotham-Bold.woff') format('woff'),
+       url('src/fonts/Gotham-Bold.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('src/fonts/Gotham-Medium.eot?') format('eot'),
+       url('src/fonts/Gotham-Medium.woff2') format('woff2'),
+       url('src/fonts/Gotham-Medium.woff') format('woff'),
+       url('src/fonts/Gotham-Medium.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//Variáveis e Mixins
+@font-bold: 'Gotham-Bold';
+@font-thin: 'Gotham-Medium';
+@font-icon: 'fontello';
+@color-menu: #666666;
+@color-social: #fff;
+@color-hover: #F00;
+
+.smooth() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.grow() {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+
+	&:hover,
+	&:focus,
+	&:active {
+		-webkit-transform: scale(1.1);
+  		transform: scale(1.1);
+	}
+}
+
+@-webkit-keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+@keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+.buzz() {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+
+	&:hover,
+	&:focus,
+	&:active {
+		-webkit-animation-name: hvr-buzz;
+		animation-name: hvr-buzz;
+		-webkit-animation-duration: 0.15s;
+		animation-duration: 0.15s;
+		-webkit-animation-timing-function: linear;
+		animation-timing-function: linear;
+		-webkit-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+	}
+}
+
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+}
+
+//Padrões de estilo
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
