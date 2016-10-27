@@ -1,8 +1,8 @@
-<section id="contato" class="contact">
+<section id="projeto" class="projeto">
 	<!--Adiciona os posts cadastrados na página de contatos-->
 	<?php  
 
-		$args = array('post_type' => 'contato');
+		$args = array('post_type' => 'projeto');
 		$loop = new WP_Query($args);
 
 		if($loop->have_posts()) {

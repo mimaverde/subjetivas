@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "license": "Private",
   "keywords": "gulp",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "del": "^2.2.2",
     "es6-promise": "^4.0.5",

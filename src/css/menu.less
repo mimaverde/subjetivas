@@ -1,0 +1,83 @@
+header{
+	position: relative;
+}
+
+.menu-principal {
+	width: 100%;
+	font-family: @font-thin;
+	font-size: 1em;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	padding: 10px 0;
+	text-align: right;
+	.transition(all 0.3s ease);
+	z-index: 1;
+
+	ul{
+		margin-right: 16%;
+	}
+
+	li {
+		display: inline-table;
+		padding: 0 10px;
+		.smooth();
+		.grow();
+	}
+
+	a {
+		color: @color-menu;
+		text-decoration: none;
+		display: block;
+
+		&:hover {
+	    	color: @color-hover;
+	    }
+
+	    &.active{
+			color: red;
+		}
+	}
+
+	&.sticky {
+		top: 0;
+		position: fixed;
+		z-index: 100;
+		border-top: 0;
+		background: @color-social;
+	}
+}
+
+.menu-social {
+	position: absolute;
+    right: 6%;
+    top: 40px;
+    z-index: 1;
+
+	.icon-facebook, .icon-instagram {
+		font-family: @font-icon;
+		color: @color-social;
+		width: 33px;
+		height: 18px;
+		display: block;
+	    background: @color-menu;
+	    text-align: center;
+	    text-decoration: none;
+	    padding: 2px 0;
+	    margin-bottom: 10px;
+	    .border-radius ();
+	    .buzz();
+
+	    &:hover {
+	    	background: @color-hover;
+	    }
+	}
+
+	.icon-facebook:before {
+		content: '\f30c';
+	}
+
+	.icon-instagram:before {
+		content: '\f32d';
+	}
+}

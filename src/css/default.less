@@ -24,7 +24,6 @@
 @font-face {
   font-family: 'Gotham-Medium';
   src: url('src/fonts/Gotham-Medium.eot?') format('eot'),
-       url('src/fonts/Gotham-Medium.woff2') format('woff2'),
        url('src/fonts/Gotham-Medium.woff') format('woff'),
        url('src/fonts/Gotham-Medium.ttf')  format('truetype');
   font-weight: normal;
@@ -109,6 +108,13 @@
 	-webkit-border-radius: @radius;
 	-moz-border-radius:    @radius;
 	border-radius:         @radius;
+}
+
+.transition (@transition) {
+  -webkit-transition: @transition;  
+  -moz-transition:    @transition;
+  -ms-transition:     @transition; 
+  -o-transition:      @transition;  
 }
 
 //Padrões de estilo

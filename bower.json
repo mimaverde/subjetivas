@@ -7,8 +7,10 @@
     "bower_components"
   ],
   "dependencies": {
-    "jquery": "^3.1.1",
-    "modernizr": "^3.3.1"
+    "jquery": "^3.1.1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "modernizr": "^3.3.1"
+  }
 }
