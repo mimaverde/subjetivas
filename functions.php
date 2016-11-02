@@ -140,6 +140,39 @@ function cadastrando_post_type_contato() {
 	register_post_type ('contato', $args);
 }
 
+// Habilita a aba de Apoio
+function cadastrando_post_type_apoio() {
+	$nomeSingular = 'Apoio';
+	$description = 'Cadastro de Realizadores';
+
+	//Página de edição customizada
+	$labels = array(
+		'name' => $nomeSingular,
+		'singular_name' => $nomeSingular,
+		'add_new_item' => 'Adicionar novo ' . $nomeSingular,
+		'edit_item' => 'Editar ' . $nomeSingular
+	);
+
+	//O que vai aparecer na página de edição
+	$supports = array(
+		'title',
+		'editor',
+		'thumbnail'
+	);
+
+	//Argumentos obrigatórios
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'description' => $description,
+		'menu_icon' => 'dashicons-heart',
+		'supports' => $supports
+	);
+
+	//Apelido da página de edição
+	register_post_type ('apoio', $args);
+}
+
 //Taxonomia de Estado para os vídeos
 function registra_taxonomia_estado() {
 	$nomeSingular = 'Estado';
@@ -194,6 +227,7 @@ function cadastrando_post_type() {
 	cadastrando_post_type_videos();
 	cadastrando_post_type_equipe();
 	cadastrando_post_type_contato();
+	cadastrando_post_type_apoio();
 	registra_taxonomia_estado();
 	registra_taxonomia_funcao();
 }

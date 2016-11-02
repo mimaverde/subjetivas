@@ -9,6 +9,7 @@
 	<?php require_once('pages/news.php'); ?>
 	<?php require_once('pages/team.php'); ?>
 	<?php require_once('pages/contact.php'); ?>
+	<?php require_once('pages/support.php'); ?>
 </main>
 
 <?php get_footer(); ?>

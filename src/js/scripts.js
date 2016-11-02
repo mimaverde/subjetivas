@@ -54,6 +54,7 @@ $(document).ready(function(){
 		onScroll();
 	});
 
+	//Ajax de busca da área de vídeos
 	$('.select-estado').change(function() {
 		var id = $('.select-estado option:selected').val();
 		var currentLink = window.location.href;
@@ -121,7 +122,6 @@ $(document).ready(function(){
 			});
 		}
 	});
-		
 });
 
 
