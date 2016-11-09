@@ -7,6 +7,7 @@
 	<!-- Busca por Estado -->
 	<?php $taxonomias_estado = get_terms('estado'); ?>
 	<?php $taxonomias_funcao = get_terms('funcao'); ?>
+	<?php $date = get_terms('date'); ?>
 	<form id="filter" action="<?php bloginfo('url'); ?>" method="GET">
 		<select class="select-estado" name="taxonomy_estado">
 			<option value="">Todos os Estados</option>
@@ -21,11 +22,23 @@
 				<option value="<?= $taxonomia->slug; ?>"><?= $taxonomia->name; ?></option>
 			<?php } ?>
 		</select>
+		<div>
+			<input href="" type="button" value="ASC" name="date" class="dateSel" />
+			<input href="" type="button" value="DESC" name="date" class="dateSel" />
+		</div>
+
+		<input type="hidden" name="action" value="myfilter">
+		<?php get_search_form(); ?>
 	</form>
 
 	<!-- Galeria de vídeos -->
 	<div id="category-post-content">
-	
+		<div class='uil-cube-css' style='-webkit-transform:scale(0.6)'>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	<?php  
 
 		if( $queryTaxonomyEstado ) {
@@ -46,7 +59,9 @@
 
 		$args = array(
 			'post_type' => 'videos',
-			'tax_query' => $taxQuery
+			'tax_query' => $taxQuery,
+			'orderby'   => 'date',
+			'order'     => $_POST['date']
 		);
 
 		$loop = new WP_Query($args);
@@ -56,7 +71,7 @@
 				$loop->the_post();
 	?>
 		
-			<?php the_post_thumbnail(); ?>
+			<img src="<?php video_thumbnail(); ?>" />
 			<h2><?php the_title(); ?></h2>
 			<div><?php the_content(); ?></div>
 		

@@ -221,6 +221,7 @@ function registra_taxonomia_funcao() {
 	register_taxonomy('funcao', 'videos', $args);
 };
 
+
 //Função única que chama todas as funções
 function cadastrando_post_type() {
 	cadastrando_post_type_projeto();

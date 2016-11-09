@@ -54,6 +54,7 @@ $(document).ready(function(){
 		onScroll();
 	});
 
+	//Ajax de busca da área de vídeos
 	$('.select-estado').change(function() {
 		var id = $('.select-estado option:selected').val();
 		var currentLink = window.location.href;
@@ -67,7 +68,11 @@ $(document).ready(function(){
 				data: {
 					'terms' : id 
 				},
+				beforeSend: function() {
+					$('.uil-cube-css').show();
+        		},
 				success: function(data) {
+					$('.uil-cube-css').hide();
 					var elemento = $(data).find('#category-post-content').html();
 					$('#category-post-content').html(elemento);
 				}
@@ -80,7 +85,11 @@ $(document).ready(function(){
 				data: {
 					'terms' : id 
 				},
+				beforeSend: function() {
+					$('.uil-cube-css').show();
+        		},
 				success: function(data) {
+					$('.uil-cube-css').hide();
 					var elemento = $(data).find('#category-post-content').html();
 					$('#category-post-content').html(elemento);
 				}
@@ -101,7 +110,11 @@ $(document).ready(function(){
 				data: {
 					'terms' : id 
 				},
+				beforeSend: function() {
+					$('.uil-cube-css').show();
+        		},
 				success: function(data) {
+					$('.uil-cube-css').hide();
 					var elemento = $(data).find('#category-post-content').html();
 					$('#category-post-content').html(elemento);
 				}
@@ -114,14 +127,60 @@ $(document).ready(function(){
 				data: {
 					'terms' : id 
 				},
+				beforeSend: function() {
+					$('.uil-cube-css').show();
+        		},
 				success: function(data) {
+					$('.uil-cube-css').hide();
 					var elemento = $(data).find('#category-post-content').html();
 					$('#category-post-content').html(elemento);
 				}
 			});
 		}
 	});
-		
+
+	//Funcão de busca via Ajax
+	$('#searchsubmit').click(function(e) {
+		e.preventDefault();
+
+		var searchValue = $('#s').val();
+
+		$.ajax({
+			type: 'POST',
+			url: '?taxonomy_estado=&taxonomy_funcao=&s=' + searchValue,
+			data: {
+				action: '',
+				searchString: searchValue
+			},
+			beforeSend: function() {
+				$('.uil-cube-css').show();
+        	},
+			success: function(data) {
+				$('.uil-cube-css').hide();
+				$('#category-post-content').html(data);
+			}
+		});
+	});
+
+	//Funcão que seleciona a ordem dos vídeos
+	$('#filter .dateSel').click(function(){
+		var filter = $('#filter');
+
+		$.ajax({
+			url:filter.attr('action'),
+			data:filter.serialize(),
+			type:filter.attr('method'),
+			beforeSend: function() {
+				$('.uil-cube-css').show();
+			},
+			success:function(data){
+				$('.uil-cube-css').hide();
+				$('#category-post-content').html(data);
+				console.log(data);
+			}
+		});
+		return false;
+	});
 });
 
 
