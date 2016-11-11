@@ -7,7 +7,6 @@
 	<!-- Busca por Estado -->
 	<?php $taxonomias_estado = get_terms('estado'); ?>
 	<?php $taxonomias_funcao = get_terms('funcao'); ?>
-	<?php $date = get_terms('date'); ?>
 	<form id="filter" action="<?php bloginfo('url'); ?>" method="GET">
 		<select class="select-estado" name="taxonomy_estado">
 			<option value="">Todos os Estados</option>
@@ -23,8 +22,8 @@
 			<?php } ?>
 		</select>
 		<div>
-			<input href="" type="button" value="ASC" name="date" class="dateSel" />
-			<input href="" type="button" value="DESC" name="date" class="dateSel" />
+			<a href="" class="dateSel" id="ASC">Antigos<a/>
+			<a href="" class="dateSel" id="DESC">Recentes<a/>
 		</div>
 
 		<input type="hidden" name="action" value="myfilter">
@@ -39,38 +38,39 @@
 			<div></div>
 			<div></div>
 		</div>
-	<?php  
+		<?php
+			if( $queryTaxonomyEstado ) {
+				$taxQuery = array(
+					'relation' => 'OR',
+					array(
+						'taxonomy' => 'estado',
+						'field' => 'slug',
+						'terms' => $_GET['taxonomy_estado']
+					),
+					array(
+						'taxonomy' => 'funcao',
+						'field' => 'slug',
+						'terms' => $_GET['taxonomy_funcao']
+					)
+				);
+			}
+		?>
 
-		if( $queryTaxonomyEstado ) {
-			$taxQuery = array(
-				'relation' => 'OR',
-				array(
-					'taxonomy' => 'estado',
-					'field' => 'slug',
-					'terms' => $_GET['taxonomy_estado']
-				),
-				array(
-					'taxonomy' => 'funcao',
-					'field' => 'slug',
-					'terms' => $_GET['taxonomy_funcao']
-				)
+		<?php
+			$args = array(
+				'post_type' => 'videos',
+				'tax_query' => $taxQuery,
+				'orderby'   => 'date',
+				'order'     => $_GET['date']
 			);
-		}
 
-		$args = array(
-			'post_type' => 'videos',
-			'tax_query' => $taxQuery,
-			'orderby'   => 'date',
-			'order'     => $_POST['date']
-		);
+			$loop = new WP_Query($args);
 
-		$loop = new WP_Query($args);
+			if($loop->have_posts()) {
+				while($loop->have_posts()) {
+					$loop->the_post();
+		?>
 
-		if($loop->have_posts()) {
-			while($loop->have_posts()) {
-				$loop->the_post();
-	?>
-		
 			<img src="<?php video_thumbnail(); ?>" />
 			<h2><?php the_title(); ?></h2>
 			<div><?php the_content(); ?></div>

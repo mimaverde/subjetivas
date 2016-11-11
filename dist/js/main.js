@@ -54,7 +54,7 @@ $(document).ready(function(){
 		onScroll();
 	});
 
-	//Ajax de busca da área de vídeos
+	//Ajax de busca por estado
 	$('.select-estado').change(function() {
 		var id = $('.select-estado option:selected').val();
 		var currentLink = window.location.href;
@@ -97,6 +97,7 @@ $(document).ready(function(){
 		}
 	});
 
+	//Ajax de busca por função
 	$('.select-funcao').change(function() {
 		var id = $('.select-funcao option:selected').val();
 		var currentLink = window.location.href;
@@ -139,10 +140,9 @@ $(document).ready(function(){
 		}
 	});
 
-	//Funcão de busca via Ajax
+	//Ajax de busca geral
 	$('#searchsubmit').click(function(e) {
 		e.preventDefault();
-
 		var searchValue = $('#s').val();
 
 		$.ajax({
@@ -162,24 +162,27 @@ $(document).ready(function(){
 		});
 	});
 
-	//Funcão que seleciona a ordem dos vídeos
-	$('#filter .dateSel').click(function(){
-		var filter = $('#filter');
+	//Ajax de ordem dos vídeos
+	$('#filter .dateSel').click(function(e){
+		e.preventDefault();
+		var currentLink = window.location.href;
+		var dateType = $(this).attr('id');
 
 		$.ajax({
-			url:filter.attr('action'),
-			data:filter.serialize(),
-			type:filter.attr('method'),
+			url:currentLink,
+			type: 'GET',
+			data: {
+				date: dateType,
+			},
 			beforeSend: function() {
 				$('.uil-cube-css').show();
 			},
 			success:function(data){
 				$('.uil-cube-css').hide();
-				$('#category-post-content').html(data);
-				console.log(data);
+				var elemento = $(data).find('#category-post-content').html();
+				$('#category-post-content').html(elemento);
 			}
 		});
-		return false;
 	});
 });
 
