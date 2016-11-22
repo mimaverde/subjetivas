@@ -1,4 +1,4 @@
-<section class="team">
+<section id="equipe" class="team">
 		<h2>Nossa equipe</h2>
 		<ul class="imoveis-listagem">
 		<!--Adiciona os posts cadastrados na página de edição de imóveis-->
