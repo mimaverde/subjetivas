@@ -73,7 +73,42 @@
 
 			<img src="<?php video_thumbnail(); ?>" />
 			<h2><?php the_title(); ?></h2>
-			<div><?php the_content(); ?></div>
+			
+			<div>
+				<div><?php the_content(); ?></div>
+				<?php $videos_meta_data = get_post_meta( $post->ID); ?>
+				<div>
+					<h2>Sobre a realizadora</h2>
+					<p>Nome:</p>
+					<p><?= $videos_meta_data['name_id'][0] ?></p>
+					<p>Cidade:</p>
+					<p><?= $videos_meta_data['city_id'][0] ?></p>
+					<p>Área de Atuação:</p>
+					<p></p>
+					<p>Biografia:</p>
+					<p><?= $videos_meta_data['biography_id'][0] ?></p>
+				</div>
+				<div>
+					<h2>Trabalhos</h2>
+					<p>Links:</p>
+					<p><?= $videos_meta_data['links_id'][0] ?></p>
+				</div>
+				<div>
+					<h2>Contato</h2>
+					<p>E-mail:</p>
+					<p><a target="_blank" href="mailto=<?= $videos_meta_data['email_id'][0] ?>"><?= $videos_meta_data['email_id'][0] ?></a></p>
+					<p>Telefone:</p>
+					<p><?= $videos_meta_data['phone_id'][0] ?></p>
+					<p>Portfólio:</p>
+					<p><a target="_blank" href="<?= $videos_meta_data['portfolio_id'][0] ?>"><?= $videos_meta_data['portfolio_id'][0] ?></a></p>
+					<p>Redes Sociais</p>
+					<a target="_blank" href="<?= $videos_meta_data['facebook_id'][0] ?>"></a>">Facebook</a>
+					<a target="_blank" href="<?= $videos_meta_data['instagram_id'][0] ?>">Instagram</a>
+					<a target="_blank" href="<?= $videos_meta_data['vimeo_id'][0] ?>">Vimeo</a>
+					<a target="_blank" href="<?= $videos_meta_data['youtube_id'][0] ?>">Youtube</a>
+				</div>
+			</div>
+			
 		
 
 	<?php

@@ -173,6 +173,125 @@ function cadastrando_post_type_apoio() {
 	register_post_type ('apoio', $args);
 }
 
+function preenche_conteudo_video( $post ) { 
+	$videos_meta_data = get_post_meta( $post->ID );
+	?>
+	
+
+	<style>
+		.form-videos label {
+			display: block;
+		}
+
+		.form-videos input, .form-videos textarea {
+			width: 100%;
+		}
+
+		.form-videos textarea {
+			height: 100px;
+		}
+
+		.form-videos div {
+			margin-bottom: 20px;
+		}
+	</style>
+	<div class="form-videos">
+		<div>
+			<label for="name">Nome:</label>
+			<input id="name" type="text" name="name_id" value="<?= $videos_meta_data['name_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="city">Cidade:</label>
+			<input id="city" type="text" name="city_id" value="<?= $videos_meta_data['city_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="biography">Biografia:</label>
+			<textarea id="biography" type="text" name="biography_id"><?= $videos_meta_data['biography_id'][0]; ?></textarea>
+		</div>
+		<div>
+			<label for="links">Links:</label>
+			<textarea id="links" type="text" name="links_id"><?= $videos_meta_data['links_id'][0]; ?></textarea>
+		</div>
+		<div>
+			<label for="email">E-mail:</label>
+			<input id="email" type="text" name="email_id" value="<?= $videos_meta_data['email_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="phone">Telefone:</label>
+			<input id="phone" type="text" name="phone_id" value="<?= $videos_meta_data['phone_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="portfolio">Portfólio:</label>
+			<input id="portfolio" type="text" name="portfolio_id" value="<?= $videos_meta_data['portfolio_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="facebook">Facebook:</label>
+			<input id="facebook" type="text" name="facebook_id" value="<?= $videos_meta_data['facebook_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="instagram">Instagram:</label>
+			<input id="instagram" type="text" name="instagram_id" value="<?= $videos_meta_data['instagram_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="vimeo">Vimeo:</label>
+			<input id="vimeo" type="text" name="vimeo_id" value="<?= $videos_meta_data['vimeo_id'][0]; ?>">
+		</div>
+		<div>
+			<label for="youtube">Youtube:</label>
+			<input id="youtube" type="text" name="youtube_id" value="<?= $videos_meta_data['youtube_id'][0]; ?>">
+		</div>
+	</div>
+<?php }
+
+//Atualiza no banco de dados as novas informações de vídeos
+function atualiza_meta_info( $post_id ) {
+	if( isset($_POST['name_id'])) {
+		update_post_meta( $post_id, 'name_id', sanitize_text_field($_POST['name_id']));
+	}
+	if( isset($_POST['city_id'])) {
+		update_post_meta( $post_id, 'city_id', sanitize_text_field($_POST['city_id']));
+	}
+	if( isset($_POST['biography_id'])) {
+		update_post_meta( $post_id, 'biography_id', sanitize_text_field($_POST['biography_id']));
+	}
+	if( isset($_POST['links_id'])) {
+		update_post_meta( $post_id, 'links_id', sanitize_text_field($_POST['links_id']));
+	}
+	if( isset($_POST['email_id'])) {
+		update_post_meta( $post_id, 'email_id', sanitize_text_field($_POST['email_id']));
+	}
+	if( isset($_POST['phone_id'])) {
+		update_post_meta( $post_id, 'phone_id', sanitize_text_field($_POST['phone_id']));
+	}
+	if( isset($_POST['portfolio_id'])) {
+		update_post_meta( $post_id, 'portfolio_id', sanitize_text_field($_POST['portfolio_id']));
+	}
+	if( isset($_POST['facebook_id'])) {
+		update_post_meta( $post_id, 'facebook_id', sanitize_text_field($_POST['facebook_id']));
+	}
+	if( isset($_POST['instagram_id'])) {
+		update_post_meta( $post_id, 'instagram_id', sanitize_text_field($_POST['instagram_id']));
+	}
+	if( isset($_POST['vimeo_id'])) {
+		update_post_meta( $post_id, 'vimeo_id', sanitize_text_field($_POST['vimeo_id']));
+	}
+	if( isset($_POST['youtube_id'])) {
+		update_post_meta( $post_id, 'youtube_id', sanitize_text_field($_POST['youtube_id']));
+	}
+}
+
+//Adiciona novos campos de cadastro
+function registra_meta_boxes() {
+	add_meta_box(
+		'informacoes-video',
+		'Informações do Vídeo',
+		'preenche_conteudo_video',
+		'videos',
+		'normal',
+		'high'
+	);
+}
+
 //Taxonomia de Estado para os vídeos
 function registra_taxonomia_estado() {
 	$nomeSingular = 'Estado';
@@ -221,7 +340,6 @@ function registra_taxonomia_funcao() {
 	register_taxonomy('funcao', 'videos', $args);
 };
 
-
 //Função única que chama todas as funções
 function cadastrando_post_type() {
 	cadastrando_post_type_projeto();
@@ -235,3 +353,5 @@ function cadastrando_post_type() {
 
 //Chama as funções das páginas cadastradas
 add_action('init', 'cadastrando_post_type');
+add_action('add_meta_boxes', 'registra_meta_boxes');
+add_action('save_post', 'atualiza_meta_info');
