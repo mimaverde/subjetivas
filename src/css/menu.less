@@ -1,5 +1,12 @@
 header{
-	position: relative;
+	position: absolute;
+    width: 100%;
+    height: 83px;
+    z-index: 1;
+    background: -moz-linear-gradient(top, rgba(187,191,192,1) 0%, rgba(187,191,192,0.02) 98%, rgba(187,191,192,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(187,191,192,1) 0%,rgba(187,191,192,0.02) 98%,rgba(187,191,192,0) 100%);
+    background: linear-gradient(to bottom, rgba(187,191,192,1) 0%,rgba(187,191,192,0.02) 98%,rgba(187,191,192,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
 }
 
 .menu-principal {
@@ -26,9 +33,10 @@ header{
 	}
 
 	a {
-		color: @color-menu;
+		color: #000;
 		text-decoration: none;
 		display: block;
+		text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 
 		&:hover {
 	    	color: @color-hover;
@@ -44,7 +52,7 @@ header{
 		position: fixed;
 		z-index: 100;
 		border-top: 0;
-		background: @color-social;
+		background: rgba(255, 255, 255, 0.9);
 	}
 }
 
