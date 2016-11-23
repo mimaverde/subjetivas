@@ -1,20 +1,24 @@
 <section id="projeto" class="projeto">
-	<!--Adiciona os posts cadastrados na página de contatos-->
-	<?php  
+	<div class="lightbox">
+		<div class="box-projeto">
+			<!--Adiciona os posts cadastrados na página de contatos-->
+			<?php  
 
-		$args = array('post_type' => 'projeto');
-		$loop = new WP_Query($args);
+				$args = array('post_type' => 'projeto');
+				$loop = new WP_Query($args);
 
-		if($loop->have_posts()) {
-			while($loop->have_posts()) {
-				$loop->the_post();
-	?>
+				if($loop->have_posts()) {
+					while($loop->have_posts()) {
+						$loop->the_post();
+			?>
 
-		<h2><?php the_title(); ?></h2>
-		<div><?php the_content(); ?></div>
+				<h2><?php the_title(); ?></h2>
+				<div><?php the_content(); ?></div>
 
-	<?php
-			}
-		}
-	?>
+			<?php
+					}
+				}
+			?>
+		</div>
+	</div>
 </section>
