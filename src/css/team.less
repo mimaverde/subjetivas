@@ -1,0 +1,55 @@
+.team {
+	background: #282828;
+	color: #FFF;
+
+	h2 {
+		font-family: @font-thin;
+		font-size: 20px;
+		text-align: center;
+		padding: 40px 0;
+	}
+
+	.title {
+		font-family: @font-medium;
+		font-size: 0.9rem;
+		margin: 10px 0;
+	}
+
+	p {
+		font-family: @font-thin;
+		font-size: 0.7rem;
+		margin: 2px 0;
+	}
+
+	.equipe-listagem {
+		text-align: center;
+
+		.list {
+			width: 14%;
+			display: inline-table;
+			text-align: center;
+			padding: 0.5%;
+			margin-bottom: 20px;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	.slick-dots li.slick-active button:before, .slick-dots li button:before {
+		color: #FFF;
+	}
+}
+
+@media (max-width: 768px){
+	.team {
+		
+
+		.equipe-listagem {
+			width: 80%;
+			margin: auto;
+		}
+	}
+}

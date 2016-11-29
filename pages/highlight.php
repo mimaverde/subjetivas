@@ -8,4 +8,5 @@
 		
 		Your browser does not support the video tag. I suggest you upgrade your browser.
 	</video>
+	<div class="lightbox"></div>
 </section>
