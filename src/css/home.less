@@ -7,7 +7,7 @@
 
 	.logo {
 		width: 60%;
-		height: 30%;
+		height: 50%;
 		top: 50%;
 		left: 50%;
 		z-index: 1;
@@ -22,9 +22,30 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		height: 100vh;
+		width: 100%;
 		z-index: 0;
 		transform: translateX(-50%) translateY(-50%);
 		transition: 1s opacity;
+	}
+}
+
+@media (max-width: 1000px) and (orientation: portrait){
+	.mobile .home video#videobg, .home video#videobg { 
+		height: 100vh;
+		width: auto;
+	}
+}
+
+@media (max-width: 1000px){
+	.home video#videobg { 
+		height: 100vh;
+		width: auto;
+	}
+
+}
+
+@media (max-width: 768px) and (orientation: landscape){
+	.mobile .home video#videobg, .home video#videobg { 
+		width: 100%;
 	}
 }

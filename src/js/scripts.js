@@ -6,16 +6,21 @@
 // }
 
 $(document).ready(function(){
+	//Mobile Mode
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+    	$('body').addClass('mobile');
+	}
+
 	//Função que faz com o que o menu fique fixo no topo da página
-	var stickyNavTop = $('.menu-principal').offset().top;
+	var stickyNavTop = $('.menu-principal, .menu-mobile').offset().top;
 
 	var stickyMenu = function() {
 		var scrollTop = $(window).scrollTop();
 
 		if(scrollTop > stickyNavTop) {
-			$('.menu-principal').addClass('sticky');
+			$('.menu-principal, .menu-mobile').addClass('sticky');
 		}else {
-			$('.menu-principal').removeClass('sticky');
+			$('.menu-principal, .menu-mobile').removeClass('sticky');
 		}
 	};
 
@@ -24,7 +29,7 @@ $(document).ready(function(){
 	//Função que faz o menu ancorar com animação 
 	var $doc = $('html, body');
 
-	$('.menu-principal a').click(function() {
+	$('.menu-principal .page').click(function() {
 	    $doc.animate({
 	        scrollTop: $( $.attr(this, 'href') ).offset().top - 37
 	    }, 500);
@@ -35,12 +40,17 @@ $(document).ready(function(){
 	function onScroll(event){
 	    var scrollPos = $(document).scrollTop();
 	    var windowSize = $(window).height();
+
 	    $('.menu-principal .page').each(function () {
 	        var currLink = $(this);
 	        var refElement = $(currLink.attr("href"));
+
 	        if (refElement.position().top - windowSize <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
 	            $('.menu-principal ul li .page').removeClass("active");
 	            currLink.addClass("active");
+	        } 
+	        else if (scrollPos <= (windowSize/2)){
+	        	$('.menu-principal ul li .page').removeClass("active");
 	        }
 	        else{
 	            currLink.removeClass("active");
@@ -52,6 +62,36 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		stickyMenu();
 		onScroll();
+	});
+
+	//Lighbox 
+	function closeLightbox(){
+		$('.lightbox').fadeOut();
+		$('main').removeClass('fixed');
+	}
+
+	$('.box-projeto .close, .lightbox').click(function(){
+		$('.box-projeto').fadeOut();
+		closeLightbox()
+	});
+
+	$('.btn-projeto').click(function(e){
+		e.preventDefault();
+
+		$('.lightbox').fadeIn();
+		$('.box-projeto').fadeIn();
+		$('main').addClass('fixed');
+	});
+
+	//Menu Mobile
+	$('.menu-mobile').click(function(){
+		$('.menu-principal').slideDown('fast');
+		$('header').addClass('mobile');
+	});
+
+	$('.close-menu, .mobile .menu-principal a').click(function(){
+		$('.menu-principal').slideUp('fast');
+		$('header').removeClass('mobile');
 	});
 
 	//Ajax de busca por estado
@@ -184,6 +224,56 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$('.box-news').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		infinite: false,
+		arrows: true,
+		centerMode: false,
+		responsive: [
+		{
+	      breakpoint: 960,
+	      settings: {
+	        slidesToShow: 3
+	      }
+	    },
+	    {
+	      breakpoint: 768,
+	      settings: {
+	        slidesToShow: 2
+	      }
+	    },
+	    {
+	      breakpoint: 568,
+	      settings: {
+	        slidesToShow: 1
+	      }
+	    }
+	  ]
+	});
+
+	if($('.equipe-listagem').width() <= 768){
+		$('.equipe-listagem').slick({
+			dots: true,
+			responsive: [
+		    {
+		      breakpoint: 769,
+		      settings: {
+		        slidesToShow: 3
+		      }
+		    },
+		    {
+		      breakpoint: 568,
+		      settings: {
+		        slidesToShow: 1
+		      }
+		    }
+		  ]
+		});
+	}else {
+		$('.equipe-listagem').slick('unslick');
+	}
 });
 
 

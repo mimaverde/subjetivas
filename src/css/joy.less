@@ -1,0 +1,53 @@
+.joy {
+	position: relative;
+	background: url('src/images/joy-bg.jpg') no-repeat;
+	width: 100%;
+	text-align: center;
+	padding: 90px 0 50px;
+	font-family: @font-thin;
+	color: #FFF;
+	font-size: 18px;
+	background-size: cover;
+
+	h2 {
+		margin-bottom: 40px;
+
+		&::before {
+			content: '●';
+			font-size: 20px;
+			color: #000;
+			position: absolute;
+			top: 40px;
+			left: 49.5%
+		}
+	}
+
+	.joy-link {
+		border: 1px solid #0f0c0e;
+		background: #FFF;
+    	padding: 5px 20px;
+    	font-family: @font-thin;
+    	font-size: 18px;
+    	color: #0f0c0e;
+    	text-decoration: none;
+    	.border-radius ();
+    	.transition(all 0.3s ease);
+
+    	&:hover {
+    		color: #FFF;
+    		background: #0f0c0e;
+    	}
+	}
+
+	.box-participe {
+		display: none;
+	}
+}
+
+@media (max-width: 750px){
+	.mobile {
+		.joy {
+			height: 70%;
+		}
+	}
+}

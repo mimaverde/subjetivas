@@ -1,0 +1,85 @@
+.contact {
+	position: relative;
+	text-align: center;
+
+	h2 {
+		font-family: @font-medium;
+		font-size: 20px;
+		margin: 40px 0 20px;
+		text-transform: uppercase;;
+
+		&::before {
+			content: '●';
+			font-size: 20px;
+			color: #000;
+			position: absolute;
+			top: -30px;
+			left: 49.5%
+		}
+	}
+
+	.content {
+		width: 50%;
+		margin: 0 auto;
+
+		span {
+			font-size: 13px;
+		    text-align: left;
+		    display: block;
+		}
+
+		br {
+			display: none;
+		}
+
+		input, textarea {
+			width: 100%;
+			font-family: @font-thin;
+			padding: 5px;
+			font-size: 13px;
+			margin-bottom: 10px;
+			border: 1px solid #000;
+			resize: none;
+		}
+
+		input[type="submit"] {
+			background: #0066ad;
+			width: auto;
+			font-family: @font-bold;
+			font-size: 20px;
+			color: #FFF;
+			border: none;
+			padding: 5px 30px;
+			cursor: pointer;
+			.transition(all 0.3s ease);
+
+			&:hover {
+				background: #000;
+				color: #FFF;
+			}
+		}
+	}
+
+	p {
+		font-family: @font-thin;
+		font-size: 16px;
+		line-height: 20px;
+		margin-bottom: 30px;
+
+		a {
+			color: #000;
+
+			&:hover {
+				color: #0066ad;
+			}
+		}
+	}
+}
+
+@media (max-width: 750px){
+	.contact {
+		.content {
+			width: 80%;
+		}
+	}
+}

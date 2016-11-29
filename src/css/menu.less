@@ -2,7 +2,7 @@ header{
 	position: absolute;
     width: 100%;
     height: 83px;
-    z-index: 1;
+    z-index: 2;
     background: -moz-linear-gradient(top, rgba(187,191,192,1) 0%, rgba(187,191,192,0.02) 98%, rgba(187,191,192,0) 100%);
     background: -webkit-linear-gradient(top, rgba(187,191,192,1) 0%,rgba(187,191,192,0.02) 98%,rgba(187,191,192,0) 100%);
     background: linear-gradient(to bottom, rgba(187,191,192,1) 0%,rgba(187,191,192,0.02) 98%,rgba(187,191,192,0) 100%);
@@ -43,7 +43,7 @@ header{
 	    }
 
 	    &.active{
-			color: red;
+			color: #000;
 		}
 	}
 
@@ -87,5 +87,77 @@ header{
 
 	.icon-instagram:before {
 		content: '\f32d';
+	}
+}
+
+.menu-mobile {
+	display: none;
+}
+
+@media (max-width: 768px){
+	.menu-principal {
+		position: fixed;
+	    background: #FFF;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    z-index: 2;
+	    display: none;
+
+	    li {
+	    	display: block;
+	    	margin-top: 20px;
+	    	height: 7%;
+	    }
+
+		ul {
+			text-align: center;
+		    width: 100%;
+		    font-size: 30px;
+		    margin-top: 20%;
+		}
+
+		&.sticky {
+			background: #FFF;
+		}
+
+		.close-menu {
+			padding: 10px 30px;
+		    position: absolute;
+		    right: 0;
+		    cursor: pointer;
+
+			&::before {
+				font-family: @font-icon;
+				content: '\e801';
+				font-size: 40px;
+				color: @color-menu;
+			}
+		}
+	}
+
+	.menu-mobile {
+		display: block;
+		padding: 10px;
+	    text-align: center;
+	    top: 30px;
+	    left: 5%;
+	    cursor: pointer;
+	    position: absolute;
+
+		&::before {
+			font-family: @font-icon;
+			content: '\f0c9';
+			font-size: 30px;
+			color: @color-menu;
+		}
+
+		&.sticky {
+			position: fixed;
+			background: #FFF;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
 	}
 }
