@@ -1,6 +1,6 @@
 <section id="projeto" class="projeto">
+	<div class="close"></div>
 	<div class="box-projeto">
-		<div class="close"></div>
 		<!--Adiciona os posts cadastrados na página de contatos-->
 		<?php  
 

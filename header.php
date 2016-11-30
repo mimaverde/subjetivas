@@ -14,6 +14,10 @@
 	<link rel="stylesheet" type="text/css" href="<?= $home; ?>/bower_components/slick-carousel/slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="<?= $home; ?>/bower_components/slick-carousel/slick/slick-theme.css"/>
 
+	<!--Scrollbar Customizado-->
+	<link rel="stylesheet" href="<?= $home; ?>/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
+	<script src="<?= $home; ?>/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="<?= $home; ?>/style.css">
 
 	<title>

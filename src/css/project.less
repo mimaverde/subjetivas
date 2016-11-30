@@ -1,19 +1,13 @@
-.box-projeto {
-	width: 70%;
-	padding: 5%;
-	top: 5%;
-    left: 50%;
-	z-index: 11;
-    margin-left: -40%;
-	position: fixed;
+.projeto {
     display: none;
 
     .close{
-        position: absolute;
+        position: fixed;
         cursor: pointer;
-        right: -10px;
-        top: -18px;
+        right: 8%;
+        top: 2%;
         color: #858585;
+        z-index: 12;
         .transition(all 0.3s ease);
 
         &::before {
@@ -25,12 +19,24 @@
         &:hover {
             color: #000;
         }
-    }
+    } 
+}
+
+.box-projeto {
+	width: 80%;
+	padding: 5%;
+    height: 90%;
+	top: 5%;
+    left: 50%;
+	z-index: 11;
+    margin-left: -45%;
+	position: fixed;
+    
 
     h3, h2 {
         font-size: 2.8rem;
         font-family: @font-bold; 
-        margin: 0 0 5px 60px;
+        margin: 0 0 5px 0;
         color: #858585;
     }
 
@@ -45,4 +51,4 @@
         margin-bottom: 20px;
         text-indent: 40px;
     }
-}    
+}   
