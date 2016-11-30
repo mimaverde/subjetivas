@@ -15,6 +15,7 @@
 	}
 
 	.listar {
+		width: 100px;
 		color: #FFF;
 		font-family: @font-thin;
 		cursor: pointer;
@@ -130,6 +131,7 @@
 		    width: 100px;
 		    padding:3px;
 		    margin-top: -10px;
+		    outline: none;
 		}
 
 		.buttonBusca {
@@ -173,6 +175,7 @@
 			img {
 				width: 100%;
 				height: 100%;
+				outline: none;
 				.transition(all 0.3s ease);
 
 				&:hover {
@@ -185,6 +188,13 @@
 				margin-left: 5px;
     			overflow: hidden;
     			display: block;
+    			outline: none;
+
+  				&:hover, 
+  				&:visited,
+  				&:active  {
+					outline: none;
+				}
 			}
 
 			h2 {
@@ -200,7 +210,161 @@
 }
 
 .box-desc {
-	display: block;
+	display: none;
+}
+
+.lightbox-video {
+	width: 100%;
+    position: fixed;
+    background: #000;
+    height: 100vh;
+    top: 0;
+    z-index: 15;
+    display: none;
+}
+
+.box-video {
+	position: fixed;
+    z-index: 16;
+    top: 5%;
+    width: 80%;
+    height: 70%;
+    background: #282828;
+    padding: 5%;
+    left: 50%;
+    margin-left: -45%;
+    display: none;
+
+    .close{
+        position: fixed;
+        cursor: pointer;
+        right: 6%;
+        top: 6%;
+        color: #858585;
+        z-index: 12;
+        .transition(all 0.3s ease);
+
+        &::before {
+            font-family: @font-icon;
+            content: '\e801';
+            font-size: 40px;
+        }
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .conteudo {
+    	width: 70%;
+    	height: 80%;
+	    margin: 0 auto;
+	   
+
+	    .title {
+	    	font-family: @font-bold;
+	    	color: #FFF;
+	    	margin-bottom: 10px;
+	    }
+
+	    .subtitle {
+	    	padding: 10px 5px;
+	    	display: block;
+	    	font-family: @font-thin;
+	    	color: #FFF;
+	    	text-transform: uppercase;
+
+	    	&::before {
+	    		font-family: @font-icon;
+	    		content: '\e806';
+	    		color: #FFF;
+	    		display: inline-block;
+				-webkit-transform: rotate(90deg);
+				-moz-transform: rotate(90deg);
+				-o-transform: rotate(90deg);
+				-ms-transform: rotate(90deg);
+				transform: rotate(90deg);
+	    	}
+
+	    	&.roxo {
+	    		background: #3a254d;
+	    	}
+
+	    	&.azul-claro {
+	    		background: #40d1da;
+	    	}
+
+	    	&.azul-marinho {
+	    		background: #083261;
+	    	}
+	    }
+
+	    .video {
+	    	width: 100%;
+	    	text-align: center;
+	    	margin-bottom: 10px;
+
+	    	iframe {
+	    		width: 100%;
+	    	}
+	    }
+
+	    .text {
+	    	width: 100%;
+	    	background: #FFF;
+	    	font-family: @font-thin;
+	    	padding-bottom: 30px;
+	    	margin-bottom: 20px;
+
+	    	a {
+	    		color: #000;
+	    	}
+
+	    	strong {
+	    		font-family: @font-medium;
+	    	}
+
+	    	p {
+				padding: 10px 20px 0;
+			    font-size: 0.8rem;
+	    	}
+
+	    	.icon-facebook::before,
+    		.icon-instagram::before,
+    		.icon-vimeo::before,
+    		.icon-youtube::before, {
+    			font-family: @font-icon;
+	    		color: #858585;
+	    		font-size: 22px;
+	    		margin-right: 10px;
+    		}
+
+	    	.icon-facebook::before {
+	    		content: '\f30c';
+	    	}
+	    	.icon-instagram::before {
+	    		content: '\f32d';
+	    	}
+	    	.icon-vimeo::before {
+	    		content: '\f27d';
+	    	}
+	    	.icon-youtube::before {
+	    		content: '\f16a';
+	    	}
+	    }
+
+	    .social {
+	    	margin: 10px 0 0 21px;
+
+	    	a {
+	    		text-decoration: none;
+
+	    		&:hover {
+	    			color: #000;
+	    		}
+	    	}
+	    }
+    }
 }
 
 @media (max-width: 960px){
@@ -212,6 +376,10 @@
 			li {
 				margin-bottom: 20px;
 			}
+		}
+
+		.conteudo {
+			width: 90%;
 		}
 	}
 }

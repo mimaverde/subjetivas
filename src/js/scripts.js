@@ -352,8 +352,28 @@ $(document).ready(function(){
         }
     });
 
-	$('.box-projeto').mCustomScrollbar({
+	$('.box-projeto, .conteudo').mCustomScrollbar({
 		 theme:"dark"
+	});
+
+	$('.videos .gallery li a').bind('click', function(e){
+		e.preventDefault();
+
+		var content = $(this).next('.box-desc').html();
+		
+		$('.videos .box-video .conteudo').html(content);
+		$('.box-video, .lightbox-video').fadeIn(function(){
+			$('.box-video').mCustomScrollbar({
+				 theme:"dark"
+			});
+		});
+		$('main').addClass('fixed');
+	});
+
+	$('.box-video .close, .lightbox-video').bind('click', function(){
+		$('.videos .box-video .conteudo').html(' ');
+		$('.box-video, .lightbox-video').fadeOut();
+		$('main').removeClass('fixed');
 	});
 });
 
