@@ -4,6 +4,11 @@
 ?>
 
 <section id="assistir" class="videos">
+	<div class="lightbox-video"></div>
+	<div class="box-video">
+		<div class="close"></div>
+		<div class="conteudo"></div>
+	</div>
 	<!-- Busca por Estado -->
 	<?php $taxonomias_estado = get_terms('estado'); ?>
 	<?php $taxonomias_funcao = get_terms('funcao'); ?>
@@ -87,37 +92,33 @@
 				</a>
 				
 				<div class="box-desc">
-					<div><?php the_content(); ?></div>
+					<h2 class="title"><?php the_title(); ?></h2>
+					<div class="video"><?php the_content(); ?></div>
 					<?php $videos_meta_data = get_post_meta( $post->ID); ?>
-					<div>
-						<h2>Sobre a realizadora</h2>
-						<p>Nome:</p>
-						<p><?= $videos_meta_data['name_id'][0] ?></p>
-						<p>Cidade:</p>
-						<p><?= $videos_meta_data['city_id'][0] ?></p>
-						<p>Área de Atuação:</p>
-						<p></p>
-						<p>Biografia:</p>
-						<p><?= $videos_meta_data['biography_id'][0] ?></p>
+					<div class="text">
+						<h2 class="subtitle roxo">Sobre a realizadora</h2>
+						<p><strong>Nome:</strong> <?= $videos_meta_data['name_id'][0] ?></p>
+						<p><strong>Cidade:</strong> <?= $videos_meta_data['city_id'][0] ?></p>
+						<p><strong>Área de Atuação:</strong></p>
+						<p><strong>Biografia:</strong> <?= $videos_meta_data['biography_id'][0] ?></p>
 					</div>
-					<div>
-						<h2>Trabalhos</h2>
-						<p>Links:</p>
+					<div class="text">
+						<h2 class="subtitle azul-claro">Trabalhos</h2>
 						<p><?= $videos_meta_data['links_id'][0] ?></p>
 					</div>
-					<div>
-						<h2>Contato</h2>
-						<p>E-mail:</p>
-						<p><a target="_blank" href="mailto=<?= $videos_meta_data['email_id'][0] ?>"><?= $videos_meta_data['email_id'][0] ?></a></p>
-						<p>Telefone:</p>
-						<p><?= $videos_meta_data['phone_id'][0] ?></p>
-						<p>Portfólio:</p>
+					<div class="text">
+						<h2 class="subtitle azul-marinho">Contato</h2>
+						<p><strong>E-mail:</strong> <a target="_blank" href="mailto=<?= $videos_meta_data['email_id'][0] ?>"><?= $videos_meta_data['email_id'][0] ?></a></p>
+						<p><strong>Telefone:</strong> <?= $videos_meta_data['phone_id'][0] ?></p>
+						<p><strong>Portfólio:</strong></p>
 						<p><a target="_blank" href="<?= $videos_meta_data['portfolio_id'][0] ?>"><?= $videos_meta_data['portfolio_id'][0] ?></a></p>
-						<p>Redes Sociais</p>
-						<a target="_blank" href="<?= $videos_meta_data['facebook_id'][0] ?>"></a>">Facebook</a>
-						<a target="_blank" href="<?= $videos_meta_data['instagram_id'][0] ?>">Instagram</a>
-						<a target="_blank" href="<?= $videos_meta_data['vimeo_id'][0] ?>">Vimeo</a>
-						<a target="_blank" href="<?= $videos_meta_data['youtube_id'][0] ?>">Youtube</a>
+						<p><strong>Redes Sociais: </strong></p>
+						<div class="social">
+							<a target="_blank" href="<?= $videos_meta_data['facebook_id'][0] ?>" class="icon-facebook"></a>
+							<a target="_blank" href="<?= $videos_meta_data['instagram_id'][0] ?>" class="icon-instagram"></a>
+							<a target="_blank" href="<?= $videos_meta_data['vimeo_id'][0] ?>" class="icon-vimeo"></a>
+							<a target="_blank" href="<?= $videos_meta_data['youtube_id'][0] ?>" class="icon-youtube"></a>
+						</div>
 					</div>
 				</div>
 			</li>
