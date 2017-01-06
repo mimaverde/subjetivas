@@ -1,6 +1,6 @@
 .joy {
 	position: relative;
-	background: url('src/images/joy-bg.jpg') no-repeat;
+	background: url('dist/images/joy-bg.jpg') no-repeat;
 	width: 100%;
 	text-align: center;
 	padding: 90px 0 50px;
@@ -9,7 +9,7 @@
 	font-size: 18px;
 	background-size: cover;
 
-	h2 {
+	.title {
 		margin-bottom: 40px;
 
 		&::before {
@@ -42,9 +42,82 @@
 	.box-participe {
 		display: none;
 	}
+
+	.lightForm {
+		background: url('dist/images/formulario.jpg') no-repeat;
+		background-size: cover;
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+
+	.regulamento {
+		display: none;
+		position: fixed;
+		z-index: 3;
+	}
+
+	.box {
+		width: 60vw;
+		height: 70vh;
+		position: fixed;
+		padding: 70px;
+		z-index: 3;
+		top: 0;
+		overflow: hidden;
+		border: 3px solid #ccc;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		background-color: rgba(255,255,255,0.5);
+	}
+
+	.formulario {
+
+		.description {
+			width: 65%;
+    		margin: 20px auto;
+    		color: #000;
+
+    		a {
+    			color: #F00;
+    		}
+		}
+
+		.content {
+			text-align: left;
+			color: #000;
+			font-size: 0.8em;    
+			height: 55vh;
+    		overflow: hidden;
+		}
+
+		h2 {
+			text-transform: uppercase;
+			font-family: @font-bold;
+			font-size: 3rem;
+		}
+
+		input, textarea{
+			background: transparent;
+			border: 1px solid #000;
+			resize: none;
+			width: 95%;
+			padding: 5px;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 @media (max-width: 750px){
+	.formulario {
+		.description {
+			widht: 100%;
+		}
+	}
 	.mobile {
 		.joy {
 			height: 70%;

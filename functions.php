@@ -140,6 +140,70 @@ function cadastrando_post_type_contato() {
 	register_post_type ('contato', $args);
 }
 
+// Habilita a aba de Formulário
+function cadastrando_post_type_formulario() {
+	$nomeSingular = 'Formulário';
+	$description = 'Formulário Completo';
+
+	//Página de edição customizada
+	$labels = array(
+		'name' => $nomeSingular,
+		'singular_name' => $nomeSingular,
+		'add_new_item' => 'Adicionar novo ' . $nomeSingular,
+		'edit_item' => 'Editar ' . $nomeSingular
+	);
+
+	//O que vai aparecer na página de edição
+	$supports = array(
+		'title',
+		'editor'
+	);
+
+	//Argumentos obrigatórios
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'description' => $description,
+		'menu_icon' => 'dashicons-paperclip',
+		'supports' => $supports
+	);
+
+	//Apelido da página de edição
+	register_post_type ('formulario', $args);
+}
+
+// Habilita a aba de regulamento
+function cadastrando_post_type_regulamento() {
+	$nomeSingular = 'Regulamento';
+	$description = 'Regulamento completo';
+
+	//Página de edição customizada
+	$labels = array(
+		'name' => $nomeSingular,
+		'singular_name' => $nomeSingular,
+		'add_new_item' => 'Adicionar novo ' . $nomeSingular,
+		'edit_item' => 'Editar ' . $nomeSingular
+	);
+
+	//O que vai aparecer na página de edição
+	$supports = array(
+		'title',
+		'editor'
+	);
+
+	//Argumentos obrigatórios
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'description' => $description,
+		'menu_icon' => 'dashicons-yes',
+		'supports' => $supports
+	);
+
+	//Apelido da página de edição
+	register_post_type ('regulamento', $args);
+}
+
 // Habilita a aba de Apoio
 function cadastrando_post_type_apoio() {
 	$nomeSingular = 'Apoio';
@@ -205,6 +269,10 @@ function preenche_conteudo_video( $post ) {
 			<input id="city" type="text" name="city_id" value="<?= $videos_meta_data['city_id'][0]; ?>">
 		</div>
 		<div>
+			<label for="action">Área de Atuação:</label>
+			<input id="action" type="text" name="action_id" value="<?= $videos_meta_data['action_id'][0]; ?>">
+		</div>
+		<div>
 			<label for="biography">Biografia:</label>
 			<textarea id="biography" type="text" name="biography_id"><?= $videos_meta_data['biography_id'][0]; ?></textarea>
 		</div>
@@ -233,6 +301,10 @@ function preenche_conteudo_video( $post ) {
 			<input id="instagram" type="text" name="instagram_id" value="<?= $videos_meta_data['instagram_id'][0]; ?>">
 		</div>
 		<div>
+			<label for="flickr">Flickr:</label>
+			<input id="flickr" type="text" name="flickr_id" value="<?= $videos_meta_data['flickr_id'][0]; ?>">
+		</div>
+		<div>
 			<label for="vimeo">Vimeo:</label>
 			<input id="vimeo" type="text" name="vimeo_id" value="<?= $videos_meta_data['vimeo_id'][0]; ?>">
 		</div>
@@ -250,6 +322,9 @@ function atualiza_meta_info( $post_id ) {
 	}
 	if( isset($_POST['city_id'])) {
 		update_post_meta( $post_id, 'city_id', sanitize_text_field($_POST['city_id']));
+	}
+	if( isset($_POST['action_id'])) {
+		update_post_meta( $post_id, 'action_id', sanitize_text_field($_POST['action_id']));
 	}
 	if( isset($_POST['biography_id'])) {
 		update_post_meta( $post_id, 'biography_id', sanitize_text_field($_POST['biography_id']));
@@ -271,6 +346,9 @@ function atualiza_meta_info( $post_id ) {
 	}
 	if( isset($_POST['instagram_id'])) {
 		update_post_meta( $post_id, 'instagram_id', sanitize_text_field($_POST['instagram_id']));
+	}
+	if( isset($_POST['flickr_id'])) {
+		update_post_meta( $post_id, 'flickr_id', sanitize_text_field($_POST['flickr_id']));
 	}
 	if( isset($_POST['vimeo_id'])) {
 		update_post_meta( $post_id, 'vimeo_id', sanitize_text_field($_POST['vimeo_id']));
@@ -346,6 +424,8 @@ function cadastrando_post_type() {
 	cadastrando_post_type_videos();
 	cadastrando_post_type_equipe();
 	cadastrando_post_type_contato();
+	cadastrando_post_type_formulario();
+	cadastrando_post_type_regulamento();
 	cadastrando_post_type_apoio();
 	registra_taxonomia_estado();
 	registra_taxonomia_funcao();
