@@ -1,9 +1,9 @@
-// Modernizr.load = function(args) {
-//     if (!window.yepnope) {
-//     } else {
-//         yepnope(args);
-//     }
-// }
+Modernizr.load = function(args) {
+    if (!window.yepnope) {
+    } else {
+        yepnope(args);
+    }
+}
 
 $(document).ready(function(){
 	//Mobile Mode
@@ -360,8 +360,30 @@ $(document).ready(function(){
         }
     });
 
-	$('.box-projeto, .conteudo').mCustomScrollbar({
+    //Seção para participar do projeto
+
+	$('.box-projeto, .conteudo, .joy .box .content').mCustomScrollbar({
 		 theme:"dark"
+	});
+
+	$('.joy .box .close').bind('click', function(){
+		$(this).parent('.box').fadeOut();
+	});
+
+	$('.joy .formulario .close').bind('click', function(){
+		$('.joy .lightForm').fadeOut();
+	});
+
+	$('.joy .box .description .link-regulamento').bind('click', function(e){
+		e.preventDefault();
+
+		$('.joy .regulamento').fadeIn();
+	});
+
+	$('.joy .joy-link').bind('click', function(e){
+		e.preventDefault();
+		
+		$('.joy .lightForm, .joy .formulario').fadeIn();
 	});
 
 	function videoLightbox() {

@@ -44,6 +44,7 @@
 	}
 
 	.lightForm {
+		display: none;
 		background: url('dist/images/formulario.jpg') no-repeat;
 		background-size: cover;
 		position: fixed;
@@ -54,14 +55,9 @@
 		z-index: 2;
 	}
 
-	.regulamento {
-		display: none;
-		position: fixed;
-		z-index: 3;
-	}
-
 	.box {
 		width: 60vw;
+		max-width: 600px;
 		height: 70vh;
 		position: fixed;
 		padding: 70px;
@@ -73,9 +69,59 @@
 		left: 50%;
 		transform: translateX(-50%) translateY(-50%);
 		background-color: rgba(255,255,255,0.5);
+
+		h2 {
+			text-transform: uppercase;
+			font-family: @font-bold;
+			font-size: 2.5rem;
+		}
+
+		.close {
+			position: fixed;
+		    z-index: 12;
+		    top: 2%;
+		    right: 4%;
+		    cursor: pointer;
+		    -webkit-transition: all .3s ease;
+		    -moz-transition: all .3s ease;
+		    -ms-transition: all .3s ease;
+		    -o-transition: all .3s ease;
+		    color: #fff;
+
+		    &::before {
+		    	font-family: 'fontello';
+				font-size: 40px;
+				content: '\e801';
+		    }
+
+		    &:hover {
+		    	color: #000;
+		    }
+		}
+	}
+
+	.regulamento {
+		display: none;
+		position: fixed;
+		z-index: 3;
+		background-color: #fff;
+		color: #000;
+
+		h2 {
+			margin-bottom: 30px;
+		}
+
+		.close {
+		    color: #000;
+
+		    &:hover {
+		    	color: #ccc;
+		    }
+		}
 	}
 
 	.formulario {
+		display: none;
 
 		.description {
 			width: 65%;
@@ -95,12 +141,6 @@
     		overflow: hidden;
 		}
 
-		h2 {
-			text-transform: uppercase;
-			font-family: @font-bold;
-			font-size: 3rem;
-		}
-
 		input, textarea{
 			background: transparent;
 			border: 1px solid #000;
@@ -108,6 +148,34 @@
 			width: 95%;
 			padding: 5px;
 			margin-bottom: 15px;
+		}
+
+		input[type="checkbox"] {
+			width: inherit;
+		}
+
+		textarea {
+			height: 7vh;
+		}
+
+		input[type="submit"] {
+			background: #0066ad;
+			width: auto;
+			font-family: @font-bold;
+			font-size: 20px;
+			color: #FFF;
+			border: none;
+			padding: 5px 30px;
+			cursor: pointer;
+			.transition(all 0.3s ease);
+			transform: translateX(-50%);
+			left: 50%;
+			position: relative;
+
+			&:hover {
+				background: #000;
+				color: #FFF;
+			}
 		}
 	}
 }
@@ -121,6 +189,52 @@
 	.mobile {
 		.joy {
 			height: 70%;
+		}
+	}
+}
+
+@media (max-width: 450px){
+	.joy {
+		.box {
+			width: 90%;
+			height: 100%;
+
+			h2 {
+				padding: 40px 0 0;
+			}
+
+			input[type="submit"] {
+				margin-top: 25px;
+			}
+
+			.close {
+				top: 12%;
+    			right: 15%;
+			}
+		}
+
+		.regulamento {
+			font-size: 1rem;
+			
+			h2 {
+				font-size: 1.8rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 750px){
+	.box {
+		.contatos {
+			display: flex;
+
+			label, p{
+				width: 46%;
+
+				&:first-child {
+					padding-right: 5%;
+				}
+			}
 		}
 	}
 }
