@@ -1,6 +1,6 @@
 <section id="participar" class="joy">
-	<h2>Quer fazer parte do Subjetivas?</h2>
-	<a href="" class="joy-link">Participe</a>
+	<h2 class="title">Quer fazer parte do Subjetivas?</h2>
+	<a href="" class="joy-link" title="Participe">Participe</a>
 
 	<!--Adiciona os posts cadastrados na página de contatos-->
 	<div class="box-participe">
@@ -24,6 +24,7 @@
 	</div>
 	<div class="lightForm"></div>
 	<div class="formulario box">
+		<div class="close"></div>
 		<!--Adiciona os posts cadastrados na página de formulário-->
 		<?php  
 
@@ -36,7 +37,7 @@
 		?>
 
 			<h2>Inscrição</h2>
-			<p class="description">Para se inscrever leia o regulamento <a href="#">aqui</a>, e preencha o formulário abaixo:</p>
+			<p class="description">Para se inscrever leia o regulamento <a href="#" class="link-regulamento">aqui</a>, e preencha o formulário abaixo:</p>
 			<div class="content"><?php the_content(); ?></div>
 
 		<?php
@@ -45,6 +46,7 @@
 		?>
 	</div>
 	<div class="regulamento box">
+		<div class="close"></div>
 		<!--Adiciona os posts cadastrados na página de regulamento-->
 		<?php  
 
