@@ -368,6 +368,7 @@ $(document).ready(function(){
 
 	$('.joy .box .close').bind('click', function(){
 		$(this).parent('.box').fadeOut();
+		$('main').removeClass('fixed');
 	});
 
 	$('.joy .formulario .close').bind('click', function(){
@@ -378,6 +379,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 		$('.joy .regulamento').fadeIn();
+		$('main').addClass('fixed');
 	});
 
 	$('.joy .joy-link').bind('click', function(e){
