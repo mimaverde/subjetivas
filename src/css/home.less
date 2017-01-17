@@ -2,7 +2,7 @@
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	background: url('dist/images/poster.jpg') no-repeat;
+	background: url('dist/images/poster.gif') no-repeat center;
 	background-size: cover;
 
 	.logo {
@@ -48,4 +48,27 @@
 	.mobile .home video#videobg, .home video#videobg { 
 		width: 150%;
 	}
+}
+
+//Player in iPhone and iPad
+
+*::-webkit-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* Old shadow dom for play button */
+
+*::--webkit-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* New shadow dom for play button */
+
+/* This one works */
+
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
 }
